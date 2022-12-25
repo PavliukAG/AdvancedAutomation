@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <ApplicationIcon />
+
+    <OutputType>Exe</OutputType>
+
+    <StartupObject />
+
+    <AssemblyName>ChainOfResponsibility</AssemblyName>
+
+    <Nullable>annotations</Nullable>
+
+    <RootNamespace>ChainOfResponsibility</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver" Version="4.5.1" />
+  </ItemGroup>
+
+</Project>
