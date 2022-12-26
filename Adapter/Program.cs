@@ -63,7 +63,7 @@ namespace Adapter
         public async Task<RestResponse> GetCountry()
         {
             RestClient client = new RestClient();
-            var request = new RestRequest($@"http://127.0.0.1:5000/country?name={countryName}", Method.Get);
+            RestRequest request = new RestRequest($@"http://127.0.0.1:5000/country?name={countryName}", Method.Get);
             return await client.ExecuteAsync(request);
         }
     }
