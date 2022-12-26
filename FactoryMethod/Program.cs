@@ -1,42 +1,74 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace FactoryMethod
 {
-    public abstract class EndPeriod
+    public interface IEndPeriod
     {
-        public abstract object FindEnd();
-        public object GetEndTimespan()
+        public object FindEnd();
+    }
+
+    public class DayEnd : IEndPeriod
+    {
+        DateTime dateTime = DateTime.Now;
+
+        public object FindEnd()
         {
-            return FindEnd();
+            return dateTime.Date.AddDays(1).AddTicks(-1);
         }
     }
 
-    public class DayEnd : EndPeriod
+    public class WeekEnd : IEndPeriod
     {
-        TimeSpan todayDay = TimeSpan.FromHours( DateTime.Now.Hour);
-        public override object FindEnd()
-        { 
-            return 24 - todayDay.Hours;
+        DateTime dateTime = DateTime.Now;
+
+        public object FindEnd()
+        {
+            while(dateTime.DayOfWeek != DayOfWeek.Sunday)
+            {
+                dateTime = dateTime.AddDays(1);
+            }
+            return dateTime.Date.AddDays(1).AddTicks(-1);
         }
     }
 
-    public class WeekEnd : EndPeriod
+    public class MonthEnd : IEndPeriod
     {
-        DayOfWeek weekDay = DateTime.Now.DayOfWeek;
-        public override object FindEnd()
+        DateTime dateTime = DateTime.Now;
+
+        public object FindEnd()
         {
-            return DayOfWeek.Sunday - weekDay;
+            return new DateTime(dateTime.Year, dateTime.Month, DateTime.DaysInMonth(dateTime.Year, dateTime.Month)).AddDays(1).AddTicks(-1);
         }
     }
 
-    public class MonthEnd : EndPeriod
+    public enum PeriodType
     {
-        TimeSpan dayOfMonth = TimeSpan.FromDays(DateTime.Now.Day);
-        public override object FindEnd()
+        Day,
+        Week,
+        Month
+    }
+
+    public class GetEndOfThePeriod
+    {
+        public static IEndPeriod ReturnPeriod(PeriodType period)
         {
-            !!!!!!!!!
-            return TimeSpan.MaxValue.TotalDays;
+            IEndPeriod endPeriod;
+            switch (period)
+            {
+                case PeriodType.Day:
+                    endPeriod = new DayEnd();
+                    break;
+                case PeriodType.Week:
+                    endPeriod = new WeekEnd();
+                    break;
+                case PeriodType.Month:
+                    endPeriod = new MonthEnd();
+                    break;
+                default:
+                    endPeriod = new DayEnd();
+                    break;
+            }
+            return endPeriod;
         }
     }
 
@@ -44,20 +76,9 @@ namespace FactoryMethod
     {
         static void Main(string[] args)
         {
-            /*TimeSpan timeSpan1 = TimeSpan.MinValue;
-            TimeSpan timeSpan = DateTime.Now.TimeOfDay;
-            var week = DateTime.Now.DayOfWeek;
-            int timeToTheEnd = 24 - timeSpan.Hours;
-            var weekToTheEnd = DateTime.Today.DayOfWeek.ToString();
-            var dayInTheMonth = TimeSpan.FromDays(DateTime.Now.DayOfWeek);
-            int time = TimeSpan.MaxValue.Hours - timeSpan.Hours;
-            var var1 = TimeSpan.MaxValue.Days;
-            var var2 = TimeSpan.MaxValue.TotalDays;*/
-
-            TimeSpan timeSpan = DateTime.Now.;
-            EndPeriod endPeriod = new DayEnd();
-            var time = endPeriod.FindEnd(timeSpan);
-            Console.WriteLine("Hello World!");
+            var period = GetEndOfThePeriod.ReturnPeriod(PeriodType.Week);
+            Console.WriteLine(period.FindEnd());
+            Console.ReadKey();
         }
 
     }
