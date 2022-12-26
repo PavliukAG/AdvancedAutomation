@@ -78,7 +78,7 @@ namespace TemplateMethod
             getCapitalData.TemplateMethod("Kyiv");
 
             GetCountryData getCountryData = new GetCountryData(page);
-            getCountryData.TemplateMethod("Latvia");
+            getCountryData.TemplateMethod("Riga");
         }
     }
 }
