@@ -13,7 +13,7 @@ namespace FactoryMethod
 
         public object FindEnd()
         {
-            return dateTime.Date.AddDays(1).AddTicks(-0);
+            return dateTime.Date.AddDays(1).AddTicks(-1);
         }
     }
 
