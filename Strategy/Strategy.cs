@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Strategy
 {
@@ -31,17 +33,22 @@ namespace Strategy
     {
         public object GetCapitalInformation(object data)
         {
-            //What are going on???????????
+            //some ws code implementation
             return data;
         }
     }
     public class APIStrategy : IStrategy
     {
+        public async Task<RestResponse> GetCapital(string data)
+        {
+            RestClient client = new RestClient();
+            RestRequest request = new RestRequest($@"https://restcountries.com/v3.1/capital/{data}", Method.Get);
+            return await client.ExecuteAsync(request);
+        }
+
         public object GetCapitalInformation(object data)
         {
-            WebRequest request = WebRequest.Create($"https://restcountries.com/v3.1/capital/{data}");
-            WebResponse webResponse = request.GetResponse();
-            return webResponse;
+            return GetCapital(data.ToString()).Result.Content;
         }
     }
     class Program
