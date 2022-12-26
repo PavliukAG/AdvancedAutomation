@@ -5,7 +5,7 @@ namespace Singleton
 {
     public class SingletonDb
     {
-        private static readonly string connectionString = "UserId=admin;Password=mypass;host=localhost;database=Tes;";
+        private static readonly string connectionString = "UserId=admin;Password=mypass;host=localhost;database=Test;";
         private static SqlConnection _connection;
         private SingletonDb() {}
         public static SqlConnection getDbConnection()
