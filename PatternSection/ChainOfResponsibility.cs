@@ -5,7 +5,7 @@ namespace PatternSection
     public class Page
     {
         public IWebDriver driver;
-        public IWebElement askCapitalField => driver.FindElement(By.XPath("//input[@id='askCapita']"));
+        public IWebElement askCapitalField => driver.FindElement(By.XPath("//input[@id='askCapital']"));
         public IWebElement askCapitalButton => driver.FindElement(By.XPath("//button[@name='Ask capital']"));
     }
 
