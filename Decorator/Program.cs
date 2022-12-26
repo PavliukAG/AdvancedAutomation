@@ -21,7 +21,7 @@ namespace Decorator
 
         public string Operation()
         {
-            return "resourse: " + request.Resource.ToString() + " parameters: " + request.Parameters.ToString() + " method: " + request.Method.ToString();
+            return "resourse : " + request.Resource.ToString() + " parameters : " + request.Parameters.ToString() + " method : " + request.Method.ToString();
         }
     }
 
