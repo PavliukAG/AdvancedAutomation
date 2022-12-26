@@ -16,7 +16,7 @@ namespace Singleton
                 {
                     _connection = new SqlConnection(connectionString);
                     _connection.Open();
-                    Console.WriteLine("Connection is opened.");
+                    Console.WriteLine("Connection is created.");
                 }
             }catch(Exception e)
             {
