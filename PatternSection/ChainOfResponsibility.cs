@@ -91,7 +91,7 @@ namespace PatternSection
     {
         static void Main(string[] args)
         {
-            string text = "some text";
+            string text = "some text.";
             Page page = new Page();
             page.driver.Navigate().GoToUrl("http://127.0.0.1:5000");
             page.askCapitalField.SendKeys(text);
