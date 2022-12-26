@@ -47,7 +47,7 @@ namespace Adapter
 
         public virtual void Display()
         {
-            Console.WriteLine("This is DataFormat class.");
+            Console.WriteLine("This is DataFormat class!");
         }
 
     }
