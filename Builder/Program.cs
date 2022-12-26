@@ -110,7 +110,7 @@ namespace Builder
             var builder = new Object();
             var director = new Director(builder);
             var action = director.BuildActionObject("bus.sendInteraction('hi')");
-            Console.WriteLine(action.ToString());
+            Console.WriteLine("Action " + action.ToString());
         }
     }
 }
