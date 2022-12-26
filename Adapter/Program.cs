@@ -79,7 +79,7 @@ namespace Adapter
         public override void Display()
         {
             string countryString = country.GetCountry().Result.Content;
-            Console.WriteLine(ConvertJSONStringToCamelCase(countryString));
+            Console.WriteLine("String in camel case : " + ConvertJSONStringToCamelCase(countryString));
         }
     }
 
