@@ -77,7 +77,7 @@ namespace FactoryMethod
         static void Main(string[] args)
         {
             var period = GetEndOfThePeriod.ReturnPeriod(PeriodType.Week);
-            Console.WriteLine(period.FindEnd());
+            Console.WriteLine("End of period : " + period.FindEnd());
             Console.ReadKey();
         }
 
